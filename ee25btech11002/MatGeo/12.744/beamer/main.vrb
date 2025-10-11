@@ -1,0 +1,18 @@
+\frametitle{Python Code}
+    \begin{lstlisting}[language=Python]
+# Highlight parallel and perpendicular
+plt.text(1, y1[240]+0.5, 'L1 || L3', color='green')
+plt.text(2, y2[260], 'L2 $\perp$ L4', color='red')
+
+# Axes and grid
+plt.axhline(0, color='black')
+plt.axvline(0, color='black')
+plt.grid(True)
+plt.legend()
+plt.title("Visualization of Lines L1, L2, L3, L4")
+plt.xlabel("X - axis")
+plt.ylabel("Y - axis")
+plt.xlim(-5, 5)
+plt.ylim(-5, 5)
+plt.show()
+    \end{lstlisting}

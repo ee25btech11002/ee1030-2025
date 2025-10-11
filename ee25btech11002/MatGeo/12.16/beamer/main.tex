@@ -1,0 +1,126 @@
+\documentclass{beamer}
+\usepackage[utf8]{inputenc}
+
+\usetheme{Madrid}
+\usecolortheme{default}
+\usepackage{amsmath,amssymb,amsfonts,amsthm}
+\usepackage{txfonts}
+\usepackage{tkz-euclide}
+\usepackage{listings}
+\usepackage{adjustbox}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{gvv}
+\usepackage{lmodern}
+\usepackage{circuitikz}
+\usepackage{tikz}
+\usepackage{graphicx}
+\usepackage{amsmath,amssymb,amsfonts,amsthm}
+\usepackage{mathtools}
+
+\setbeamertemplate{page number in head/foot}[totalframumber]
+
+\usepackage{tcolorbox}
+\tcbuselibrary{minted,breakable,xparse,skins}
+\usepackage{lmodern}
+\usepackage{multicol}
+
+
+\definecolor{bg}{gray}{0.95}
+\DeclareTCBListing{mintedbox}{O{}m!O{}}{%
+  breakable=true,
+  listing engine=minted,
+  listing only,
+  minted language=#2,
+  minted style=default,
+  minted options={%
+    linenos,
+    gobble=0,
+    breaklines=true,
+    breakafter=,,
+    fontsize=\small,
+    numbersep=8pt,
+    #1},
+  boxsep=0pt,
+  left skip=0pt,
+  right skip=0pt,
+  left=25pt,
+  right=0pt,
+  top=3pt,
+  bottom=3pt,
+  arc=5pt,
+  leftrule=0pt,
+  rightrule=0pt,
+  bottomrule=2pt,
+  toprule=2pt,
+  colback=bg,
+  colframe=orange!70,
+  enhanced,
+  overlay={%
+    \begin{tcbclipinterior}
+    \fill[orange!20!white] (frame.south west) rectangle ([xshift=20pt]frame.north west);
+    \end{tcbclipinterior}},
+  #3,
+}
+\lstset{
+    language=C,
+    basicstyle=\ttfamily\small,
+    keywordstyle=\color{blue},
+    stringstyle=\color{orange},
+    commentstyle=\color{green!60!black},
+    numbers=left,
+    numberstyle=\tiny\color{gray},
+    breaklines=true,
+    showstringspaces=false,
+}
+%------------------------------------------------------------
+%This block of code defines the information to appear in the
+%Title page
+\title %optional
+{12.16}
+\date{October 3,2025}
+%\subtitle{A short story}
+
+\author % (optional)
+{EE25BTECH11002 - Achat Parth Kalpesh}
+
+
+
+\begin{document}
+
+\frame{\titlepage}
+
+\begin{frame}{Question}
+In a linear inverse problem, the coefficient matrix, $\vec{A} = \myvec{ 2.00 & 2.01 \\ 2.01 & 2.00 }$.
+ The eigenvalues of $\vec{A}$ are
+  \begin{enumerate}
+   \begin{multicols}{4}
+   \item $\brak{4.01\,, -0.01}$
+   \item $\brak{-4.01\,,-0.01}$
+   \item $\brak{4.01\,,0.01}$
+   \item $\brak{-4.01\,,1.01}$
+   \end{multicols}
+   \end{enumerate}
+\end{frame}
+
+\begin{frame}{Solution:}
+The characteristic equation for matrix $\vec{A}$ is given by
+\begin{align}
+    \mydet{\vec{A} - \lambda\vec{I}} = 0
+\end{align}
+\begin{align}
+    \mydet{2.00-\lambda & 2.01\\ 2.01 & 2.00-\lambda} = 0\\
+     \brak{2.00-\lambda}^2 - \brak{2.01}^2 = 0\\
+     \brak{\brak{2.00-\lambda} - 2.01}\brak{\brak{2.00-\lambda} + 2.01} = 0\\
+     \brak{-\lambda - 0.01}\brak{-\lambda + 4.01} = 0\\
+     \therefore \lambda_1 = 4.01,\quad \lambda_2 = -0.01\\
+\end{align}
+\end{frame}
+
+\begin{frame}{Solution:}
+Hence, the eigenvalues are
+\begin{align}
+    \lambda_1 = 4.01,\ \lambda_2 = -0.01
+\end{align}
+\end{frame}
+\end{document}

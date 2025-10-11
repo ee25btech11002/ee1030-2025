@@ -1,0 +1,13 @@
+\frametitle{Python Code}
+    \begin{lstlisting}[language=Python]
+# Axes and formatting
+plt.axhline(0, color='k', linewidth=0.8)
+plt.axvline(0, color='k', linewidth=0.8)
+plt.gca().set_aspect('equal', adjustable='box')
+plt.title('Ellipse and Circles with Centers')
+plt.xlabel('X - axis')
+plt.ylabel('Y - axis')
+plt.legend(loc='upper right')
+plt.grid(True, linestyle='--', alpha=0.6)
+plt.show()
+    \end{lstlisting}

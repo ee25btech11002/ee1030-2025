@@ -1,0 +1,142 @@
+\documentclass{beamer}
+\usepackage[utf8]{inputenc}
+
+\usetheme{Madrid}
+\usecolortheme{default}
+\usepackage{amsmath,amssymb,amsfonts,amsthm}
+\usepackage{txfonts}
+\usepackage{tkz-euclide}
+\usepackage{listings}
+\usepackage{adjustbox}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{gvv}
+\usepackage{lmodern}
+\usepackage{circuitikz}
+\usepackage{lmodern}
+\usepackage{multicol}
+\usepackage{tikz}
+\usepackage{graphicx}
+
+\setbeamertemplate{page number in head/foot}[totalframumber]
+
+\usepackage{tcolorbox}
+\tcbuselibrary{minted,breakable,xparse,skins}
+
+
+
+\definecolor{bg}{gray}{0.95}
+\DeclareTCBListing{mintedbox}{O{}m!O{}}{%
+  breakable=true,
+  listing engine=minted,
+  listing only,
+  minted language=#2,
+  minted style=default,
+  minted options={%
+    linenos,
+    gobble=0,
+    breaklines=true,
+    breakafter=,,
+    fontsize=\small,
+    numbersep=8pt,
+    #1},
+  boxsep=0pt,
+  left skip=0pt,
+  right skip=0pt,
+  left=25pt,
+  right=0pt,
+  top=3pt,
+  bottom=3pt,
+  arc=5pt,
+  leftrule=0pt,
+  rightrule=0pt,
+  bottomrule=2pt,
+  toprule=2pt,
+  colback=bg,
+  colframe=orange!70,
+  enhanced,
+  overlay={%
+    \begin{tcbclipinterior}
+    \fill[orange!20!white] (frame.south west) rectangle ([xshift=20pt]frame.north west);
+    \end{tcbclipinterior}},
+  #3,
+}
+\lstset{
+    language=C,
+    basicstyle=\ttfamily\small,
+    keywordstyle=\color{blue},
+    stringstyle=\color{orange},
+    commentstyle=\color{green!60!black},
+    numbers=left,
+    numberstyle=\tiny\color{gray},
+    breaklines=true,
+    showstringspaces=false,
+}
+%------------------------------------------------------------
+%This block of code defines the information to appear in the
+%Title page
+\title %optional
+{12.640}
+\date{October 11,2025}
+%\subtitle{A short story}
+
+\author % (optional)
+{EE25BTECH11002 - Achat Parth Kalpesh}
+
+
+
+\begin{document}
+
+
+\frame{\titlepage}
+
+\begin{frame}{Question}
+$\vec{P}$ and $\vec{R}$ are Jacobian matrices for two different geophysical inverse problems. If their generalized inverses are written as $\vec{P}^{-g} = \brak{\vec{P}^T \vec{P}}^{-1} \vec{P}^T$ and $\vec{R}^{-g} = \vec{R}^T\brak{\vec{R} \vec{R}^T}^{-1}$, then
+\begin{enumerate}
+    \item $\vec{P}$ represents an overdetermined problem and $\vec{R}$ represents an underdetermined problem
+    \item $\vec{P}$ represents an underdetermined problem and $\vec{R}$ represents an overdetermined problem
+    \item Both $\vec{P}$ and $\vec{R}$ represent overdetermined problems
+    \item Both $\vec{P}$ and $\vec{R}$ represent underdetermined problems
+\end{enumerate}
+\end{frame}
+
+\begin{frame}{Solution}
+Given are two Jacobian matrices $\vec{P}$ and $\vec{R}$ with generalized inverses:
+\begin{align}
+    \vec{P}^{-g} &= \brak{\vec{P}^T \vec{P}}^{-1} \vec{P}^T \\
+    \vec{R}^{-g} &= \vec{R}^T \brak{\vec{R} \vec{R}^T}^{-1}
+\end{align}
+Let $\vec{P} \in \mathbb{R}^{m \times n}$ and $\vec{R} \in \mathbb{R}^{m \times n}$
+\begin{align}
+    \vec{P}^{-g} = \brak{\vec{P}^T \vec{P}}^{-1} \vec{P}^T\\
+    \vec{P}^T \vec{P} \in \mathbb{R}^{n \times n}
+\end{align}
+\end{frame}
+
+
+
+\begin{frame}{Solution}
+For the inverse to exist
+\begin{align}
+   \det\brak{\vec{P}^T \vec{P}} \neq 0 \\
+   \implies \text{rank}\brak{\vec{P}} = n \leq m
+\end{align}
+This implies $m \geq n$, i.e., more equations than unknowns. Hence, $\vec{P}$ is tall and the system is overdetermined
+\begin{align}
+    \vec{R}^{-g} = \vec{R}^T \brak{\vec{R} \vec{R}^T}^{-1}\\
+    \vec{R} \vec{R}^T \in \mathbb{R}^{m \times m}
+\end{align}
+For the inverse to exist
+\begin{align}
+    \det\brak{\vec{R} \vec{R}^T} \neq 0 \\
+    \implies \text{rank}\brak{\vec{R}} = m \leq n
+\end{align}
+\end{frame}
+
+\begin{frame}{Solution}
+This implies $n \geq m$, i.e., more unknowns than equations. Hence, $\vec{R}$ is wide and the system is underdetermined\\
+$\vec{P}$ represents an overdetermined system and $\vec{R}$ represents an underdetermined system
+\end{frame}
+
+
+\end{document}

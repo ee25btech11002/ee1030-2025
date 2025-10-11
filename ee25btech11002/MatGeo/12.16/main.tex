@@ -1,0 +1,82 @@
+\let\negmedspace\undefined
+\let\negthickspace\undefined
+\documentclass[journal]{IEEEtran}
+\usepackage[a5paper, margin=10mm, onecolumn]{geometry}
+%\usepackage{lmodern} % Ensure lmodern is loaded for pdflatex
+\usepackage{tfrupee} % Include tfrupee package
+
+\setlength{\headheight}{1cm} % Set the height of the header box
+\setlength{\headsep}{0mm}     % Set the distance between the header box and the top of the text
+
+\usepackage{gvv-book}
+\usepackage{gvv}
+\usepackage{cite}
+\usepackage{amsmath,amssymb,amsfonts,amsthm}
+\usepackage{algorithmic}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage{xcolor}
+\usepackage{txfonts}
+\usepackage{listings}
+\usepackage{enumitem}
+\usepackage{mathtools}
+\usepackage{gensymb}
+\usepackage{comment}
+\usepackage[breaklinks=true]{hyperref}
+\usepackage{tkz-euclide} 
+\usepackage{listings}
+% \usepackage{gvv}                                        
+\def\inputGnumericTable{}                                 
+\usepackage[latin1]{inputenc}                                
+\usepackage{color}                                            
+\usepackage{array}                                            
+\usepackage{longtable}                                       
+\usepackage{calc}                                             
+\usepackage{multirow}                                         
+\usepackage{hhline}                                           
+\usepackage{ifthen}                                           
+\usepackage{lscape}
+\begin{document}
+\bibliographystyle{IEEEtran}
+\title{12.16}
+\author{EE25BTECH11002 - Achat Parth Kalpesh }
+{\let\newpage\relax\maketitle}
+\renewcommand{\thefigure}{\theenumi}
+\renewcommand{\thetable}{\theenumi}
+\setlength{\intextsep}{10pt} % Space between text and floats
+\numberwithin{equation}{enumi}
+\numberwithin{figure}{enumi}
+\renewcommand{\thetable}{\theenumi}
+\parindent 0px
+
+
+
+\textbf{Question:}\\
+In a linear inverse problem, the coefficient matrix, $\vec{A} = \myvec{ 2.00 & 2.01 \\ 2.01 & 2.00 }$.
+
+         The eigenvalues of $\vec{A}$ are
+            \begin{enumerate}
+                \begin{multicols}{4}
+                    \item $\brak{4.01\,, -0.01}$
+                    \item $\brak{-4.01\,,-0.01}$
+                    \item $\brak{4.01\,,0.01}$
+                    \item $\brak{-4.01\,,1.01}$
+                \end{multicols}
+            \end{enumerate}
+\textbf{Solution}\\
+The characteristic equation for matrix $\vec{A}$ is given by
+\begin{align}
+    \mydet{\vec{A} - \lambda\vec{I}} = 0
+\end{align}
+\begin{align}
+    \mydet{2.00-\lambda & 2.01\\ 2.01 & 2.00-\lambda} = 0\\
+     \brak{2.00-\lambda}^2 - \brak{2.01}^2 = 0\\
+     \brak{\brak{2.00-\lambda} - 2.01}\brak{\brak{2.00-\lambda} + 2.01} = 0\\
+     \brak{-\lambda - 0.01}\brak{-\lambda + 4.01} = 0\\
+     \therefore \lambda_1 = 4.01,\quad \lambda_2 = -0.01\\
+\end{align}
+Hence, the eigenvalues are
+\begin{align}
+    \lambda_1 = 4.01,\ \lambda_2 = -0.01
+\end{align}
+\end{document}

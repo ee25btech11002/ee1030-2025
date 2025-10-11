@@ -1,0 +1,115 @@
+\let\negmedspace\undefined
+\let\negthickspace\undefined
+\documentclass[journal]{IEEEtran}
+\usepackage[a5paper, margin=10mm, onecolumn]{geometry}
+%\usepackage{lmodern} % Ensure lmodern is loaded for pdflatex
+\usepackage{tfrupee} % Include tfrupee package
+
+\setlength{\headheight}{1cm} % Set the height of the header box
+\setlength{\headsep}{0mm}     % Set the distance between the header box and the top of the text
+
+\usepackage{gvv-book}
+\usepackage{gvv}
+\usepackage{cite}
+\usepackage{amsmath,amssymb,amsfonts,amsthm}
+\usepackage{algorithmic}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage{xcolor}
+\usepackage{txfonts}
+\usepackage{listings}
+\usepackage{enumitem}
+\usepackage{mathtools}
+\usepackage{gensymb}
+\usepackage{comment}
+\usepackage[breaklinks=true]{hyperref}
+\usepackage{tkz-euclide} 
+\usepackage{listings}
+% \usepackage{gvv}                                        
+\def\inputGnumericTable{}                                 
+\usepackage[latin1]{inputenc}                                
+\usepackage{color}                                            
+\usepackage{array}                                            
+\usepackage{longtable}                                       
+\usepackage{calc}                                             
+\usepackage{multirow}                                         
+\usepackage{hhline}                                           
+\usepackage{ifthen}                                           
+\usepackage{lscape}
+\begin{document}
+\bibliographystyle{IEEEtran}
+\title{12.744}
+\author{EE25BTECH11002 - Achat Parth Kalpesh }
+{\let\newpage\relax\maketitle}
+\renewcommand{\thefigure}{\theenumi}
+\renewcommand{\thetable}{\theenumi}
+\setlength{\intextsep}{10pt} % Space between text and floats
+\numberwithin{equation}{enumi}
+\numberwithin{figure}{enumi}
+\renewcommand{\thetable}{\theenumi}
+\parindent 0px
+
+
+
+\textbf{Question:}\\
+Consider the following equations of straight lines:
+\begin{align*}
+	\text{Line L1} &\colon 2x - 3y = 5 \\
+	\text{Line L2} &\colon 3x + 2y = 8 \\
+	\text{Line L3} &\colon 4x - 6y = 5 \\
+	\text{Line L4} &\colon 6x - 9y = 6
+\end{align*}
+Which one among the following is the correct statement?
+\begin{enumerate}
+	\item L1 is parallel to L2 and L1 is perpendicular to L3
+	\item L2 is parallel to L4 and L2 is perpendicular to L1
+	\item L3 is perpendicular to L4 and L3 is parallel to L2
+	\item L4 is perpendicular to L2 and L4 is parallel to L3
+\end{enumerate}
+
+\textbf{Solution:}\\
+A line $ax + by = c$ can be written as
+\begin{align}
+\vec{n}^T \vec{x} = c,
+\end{align}
+where
+\begin{align}
+\vec{n} = \myvec{a\\b} \quad
+\vec{x} = \myvec{x\\y}
+\end{align}
+
+Thus, the normal vectors are:
+\begin{align}
+\vec{n}_1 &= \myvec{2\\-3}, &
+\vec{n}_2 &= \myvec{3\\2}, &
+\vec{n}_3 &= \myvec{4\\-6}, &
+\vec{n}_4 &= \myvec{6\\-9}
+\end{align}
+
+Two lines are parallel if their normal vectors are proportional:
+\begin{align}
+\vec{n}_3 &= 2 \vec{n}_1 \implies \text{L1 is parallel to L3}, \\
+\vec{n}_4 &= \frac{3}{2} \vec{n}_3 \implies \text{L3 is parallel to L4}.
+\end{align}
+
+Two lines are perpendicular if
+\begin{align}
+\vec{n}_i^T \vec{n}_j = 0
+\end{align}
+
+\begin{align}
+\vec{n}_1^T \vec{n}_2 &= \myvec{2 & -3} \myvec{3\\2} = 6 - 6 = 0 
+\implies \text{L1 is perpendicular to L2},\\
+\vec{n}_4^T \vec{n}_2 &= \myvec{6 & -9} \myvec{3\\2} = 18 - 18 = 0 
+\implies \text{L4 is perpendicular to L2}
+\end{align}
+
+L4 is perpendicular to L2 and L4 is parallel to L3
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=\columnwidth]{figs/figure_py.png}
+    \caption{Lines}
+    \label{fig:fig}
+ \end{figure}
+\end{document}

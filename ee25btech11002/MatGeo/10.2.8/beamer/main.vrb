@@ -1,0 +1,10 @@
+\frametitle{Python Code}
+    \begin{lstlisting}[language=Python]
+plt.gca().set_aspect('equal', adjustable='box')
+plt.grid(True, linestyle='--', alpha=0.5)
+plt.xlabel('X - axis')
+plt.ylabel('Y - axis')
+plt.title('Shortest Distance from Point (2,7) to Circle')
+plt.legend(loc='upper right')
+plt.show()
+    \end{lstlisting}

@@ -1,0 +1,149 @@
+\let\negmedspace\undefined
+\let\negthickspace\undefined
+\documentclass[journal]{IEEEtran}
+\usepackage[a5paper, margin=10mm, onecolumn]{geometry}
+%\usepackage{lmodern} % Ensure lmodern is loaded for pdflatex
+\usepackage{tfrupee} % Include tfrupee package
+
+\setlength{\headheight}{1cm} % Set the height of the header box
+\setlength{\headsep}{0mm}     % Set the distance between the header box and the top of the text
+
+\usepackage{gvv-book}
+\usepackage{gvv}
+\usepackage{cite}
+\usepackage{amsmath,amssymb,amsfonts,amsthm}
+\usepackage{algorithmic}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage{xcolor}
+\usepackage{txfonts}
+\usepackage{listings}
+\usepackage{enumitem}
+\usepackage{mathtools}
+\usepackage{gensymb}
+\usepackage{comment}
+\usepackage[breaklinks=true]{hyperref}
+\usepackage{tkz-euclide} 
+\usepackage{listings}
+% \usepackage{gvv}                                        
+\def\inputGnumericTable{}                                 
+\usepackage[latin1]{inputenc}                                
+\usepackage{color}                                            
+\usepackage{array}                                            
+\usepackage{longtable}                                       
+\usepackage{calc}                                             
+\usepackage{multirow}                                         
+\usepackage{hhline}                                           
+\usepackage{ifthen}                                           
+\usepackage{lscape}
+\begin{document}
+\bibliographystyle{IEEEtran}
+\title{12.120}
+\author{EE25BTECH11002 - Achat Parth Kalpesh }
+{\let\newpage\relax\maketitle}
+\renewcommand{\thefigure}{\theenumi}
+\renewcommand{\thetable}{\theenumi}
+\setlength{\intextsep}{10pt} % Space between text and floats
+\numberwithin{equation}{enumi}
+\numberwithin{figure}{enumi}
+\renewcommand{\thetable}{\theenumi}
+\parindent 0px
+
+
+
+\textbf{Question:}\\
+Let $\vec{A}$ be a $4 \times 4$ matrix with eigen values $-5,-2,1,4 $. Which of the following is the eigenvalue of
+\begin{align}
+    \myvec{\vec{A} & \vec{I}\\ \vec{I} & \vec{A}},
+\end{align} 
+where $\vec{I}$ is the $4 \times 4$ identity matrix ?
+\begin{enumerate}
+	\begin{multicols}{4}
+    \item $-5$
+    \item $-7$
+    \item $2$
+    \item $1$
+    \end{multicols}
+\end{enumerate}
+
+\textbf{Solution:}\\
+Let $v$ be any eigenvector of $\vec{A}$ with eigenvalue $\lambda$, i.e.
+\begin{align}
+    \vec{Av}=\lambda \vec{v}
+\end{align}
+and
+\begin{align}
+    \vec{M} = \myvec{\vec{A} & \vec{I}\\\vec{I} & \vec{A}}
+\end{align}
+Let 
+\begin{align}
+    \vec{x} = \myvec{\vec{x}_1\\ \vec{x}_2}
+\end{align}
+be an eigenvector of $\vec{M}$ corresponding to eigenvalue $\mu$ where $\vec{x_1}$ and $\vec{x_2}$ are 4 $\times$ 1 column vectors, i.e.
+\begin{align}
+    \vec{M}\vec{x} = \mu \vec{x}
+\end{align}
+Substituting,
+\begin{align}
+    \myvec{\vec{A} & \vec{I}\\ \vec{I} & \vec{A}}
+    \myvec{\vec{x}_1\\ \vec{x}_2} = \myvec{\mu \vec{x}_1\\ \mu \vec{x}_2}
+\end{align}
+This gives two matrix equations:
+\begin{align}
+\vec{A}\vec{x}_1 + \vec{x}_2 &= \mu \vec{x}_1 \label{eq1}\\
+\vec{x}_1 + \vec{A}\vec{x}_2 &= \mu \vec{x}_2 \label{eq2}
+\end{align}
+From \eqref{eq1},
+\begin{align}
+    \brak{\vec{A} - \mu \vec{I}}\vec{x}_1 + \vec{x}_2 = 0\\
+\vec{x}_2 = -\brak{\vec{A} - \mu \vec{I}}\vec{x}_1.
+\end{align}
+Substitute this in \eqref{eq2}:
+\begin{align}
+\vec{x}_1 + \vec{A}\sbrak{-\brak{\vec{A} - \mu \vec{I}}\vec{x}_1} 
+&= \mu \sbrak{-\brak{\vec{A} - \mu \vec{I}}\vec{x}_1}\\
+\vec{x}_1 - \vec{A}\brak{\vec{A} - \mu \vec{I}}\vec{x}_1 
+&= -\mu\brak{\vec{A} - \mu \vec{I}}\vec{x}_1\\
+\sbrak{\vec{I} - \brak{\vec{A} - \mu \vec{I}}^2}\vec{x}_1 &= 0
+\end{align}
+For a non-trivial solution, 
+\begin{align}
+    \det\sbrak{\vec{I} - \brak{\vec{A} - \mu \vec{I}}^2} = 0
+\end{align}
+As
+\begin{align}
+    \vec{Av}=\lambda \vec{v}
+\end{align}
+\begin{align}
+    \sbrak{\vec{I} - \brak{\vec{A} - \mu \vec{I}}^2}\vec{v} = \sbrak{\vec{v} - \brak{\vec{A} - \mu \vec{I}}^2 \vec{v}} 
+\end{align}
+Let 
+\begin{align}
+    \brak{\vec{A} - \mu \vec{I}}^2 \vec{v} &= \brak{\vec{A} - \mu \vec{I}} \brak{\vec{A} - \mu \vec{I}} \vec{v}\\
+    \brak{\vec{A} - \mu \vec{I}} \vec{v} &= \vec{A} \vec{v} - \mu \vec{v}\\
+    &= \brak{\lambda - \mu } \vec{v}
+\end{align} 
+\begin{align}
+    \brak{\vec{A} - \mu \vec{I}} \brak{\lambda - \mu } \vec{v} = \brak{\lambda - \mu}^2 \vec{v}
+\end{align}
+\begin{align}
+    \sbrak{\vec{I} - \brak{\vec{A} - \mu \vec{I}}^2}\vec{v}
+= \sbrak{1 - \brak{\lambda - \mu}^2}\vec{v}
+\end{align}
+For a non-zero $\vec{v}$, this holds only if 
+\begin{align}
+    1 - \brak{\lambda - \mu}^2 = 0\\
+    \mu = \lambda \pm 1
+\end{align}
+Given eigenvalues of $\vec{A}$ are 
+\begin{align}
+    \lambda \in \cbrak{-5, -2, 1, 4}
+\end{align}
+Therefore, the eigenvalues of $\vec{M}$ are
+\begin{align}
+    \lambda + 1 &\in \cbrak{-4, -1, 2, 5}\\
+\lambda - 1 &\in \cbrak{-6, -3, 0, 3}
+\end{align}
+Eigenvalues of $\vec{M}$ are $-6,-4,-3,-1,0,2,3,5$
+
+\end{document}

@@ -1,0 +1,92 @@
+\let\negmedspace\undefined
+\let\negthickspace\undefined
+\documentclass[journal]{IEEEtran}
+\usepackage[a5paper, margin=10mm, onecolumn]{geometry}
+%\usepackage{lmodern} % Ensure lmodern is loaded for pdflatex
+\usepackage{tfrupee} % Include tfrupee package
+
+\setlength{\headheight}{1cm} % Set the height of the header box
+\setlength{\headsep}{0mm}     % Set the distance between the header box and the top of the text
+
+\usepackage{gvv-book}
+\usepackage{gvv}
+\usepackage{cite}
+\usepackage{amsmath,amssymb,amsfonts,amsthm}
+\usepackage{algorithmic}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage{xcolor}
+\usepackage{txfonts}
+\usepackage{listings}
+\usepackage{enumitem}
+\usepackage{mathtools}
+\usepackage{gensymb}
+\usepackage{comment}
+\usepackage[breaklinks=true]{hyperref}
+\usepackage{tkz-euclide} 
+\usepackage{listings}
+% \usepackage{gvv}                                        
+\def\inputGnumericTable{}                                 
+\usepackage[latin1]{inputenc}                                
+\usepackage{color}                                            
+\usepackage{array}                                            
+\usepackage{longtable}                                       
+\usepackage{calc}                                             
+\usepackage{multirow}                                         
+\usepackage{hhline}                                           
+\usepackage{ifthen}                                           
+\usepackage{lscape}
+\begin{document}
+\bibliographystyle{IEEEtran}
+\title{12.640}
+\author{EE25BTECH11002 - Achat Parth Kalpesh }
+{\let\newpage\relax\maketitle}
+\renewcommand{\thefigure}{\theenumi}
+\renewcommand{\thetable}{\theenumi}
+\setlength{\intextsep}{10pt} % Space between text and floats
+\numberwithin{equation}{enumi}
+\numberwithin{figure}{enumi}
+\renewcommand{\thetable}{\theenumi}
+\parindent 0px
+
+
+
+\textbf{Question:}\\
+$\vec{P}$ and $\vec{R}$ are Jacobian matrices for two different geophysical inverse problems. If their generalized inverses are written as $\vec{P}^{-g} = \brak{\vec{P}^T \vec{P}}^{-1} \vec{P}^T$ and $\vec{R}^{-g} = \vec{R}^T\brak{\vec{R} \vec{R}^T}^{-1}$, then
+\begin{enumerate}
+    \item $\vec{P}$ represents an overdetermined problem and $\vec{R}$ represents an underdetermined problem
+    \item $\vec{P}$ represents an underdetermined problem and $\vec{R}$ represents an overdetermined problem
+    \item Both $\vec{P}$ and $\vec{R}$ represent overdetermined problems
+    \item Both $\vec{P}$ and $\vec{R}$ represent underdetermined problems
+\end{enumerate}
+
+\textbf{Solution:}\\
+Given are two Jacobian matrices $\vec{P}$ and $\vec{R}$ with generalized inverses:
+\begin{align}
+    \vec{P}^{-g} &= \brak{\vec{P}^T \vec{P}}^{-1} \vec{P}^T \\
+    \vec{R}^{-g} &= \vec{R}^T \brak{\vec{R} \vec{R}^T}^{-1}
+\end{align}
+Let $\vec{P} \in \mathbb{R}^{m \times n}$ and $\vec{R} \in \mathbb{R}^{m \times n}$
+\begin{align}
+    \vec{P}^{-g} = \brak{\vec{P}^T \vec{P}}^{-1} \vec{P}^T\\
+    \vec{P}^T \vec{P} \in \mathbb{R}^{n \times n}
+\end{align}
+For the inverse to exist
+\begin{align}
+   \det\brak{\vec{P}^T \vec{P}} \neq 0 \\
+   \implies \text{rank}\brak{\vec{P}} = n \leq m
+\end{align}
+This implies $m \geq n$, i.e., more equations than unknowns. Hence, $\vec{P}$ is tall and the system is overdetermined
+\begin{align}
+    \vec{R}^{-g} = \vec{R}^T \brak{\vec{R} \vec{R}^T}^{-1}\\
+    \vec{R} \vec{R}^T \in \mathbb{R}^{m \times m}
+\end{align}
+For the inverse to exist
+\begin{align}
+    \det\brak{\vec{R} \vec{R}^T} \neq 0 \\
+    \implies \text{rank}\brak{\vec{R}} = m \leq n
+\end{align}
+This implies $n \geq m$, i.e., more unknowns than equations. Hence, $\vec{R}$ is wide and the system is underdetermined\\
+$\vec{P}$ represents an overdetermined system and $\vec{R}$ represents an underdetermined system
+
+\end{document}
