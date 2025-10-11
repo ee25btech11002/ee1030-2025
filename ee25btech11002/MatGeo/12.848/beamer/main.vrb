@@ -1,18 +1,20 @@
 \frametitle{Python Code}
     \begin{lstlisting}[language=Python]
-# Highlight parallel and perpendicular
-plt.text(1, y1[240]+0.5, 'L1 || L3', color='green')
-plt.text(2, y2[260], 'L2 $\perp$ L4', color='red')
+X, Y = np.meshgrid(x, y)
+ax.plot_surface(X, Y, Z_surface, alpha=0.5)
+ax.plot_surface(X, Y, Z_plane, alpha=0.5)
+ax.scatter(px, py, pz, s=60)
 
-# Axes and grid
-plt.axhline(0, color='black')
-plt.axvline(0, color='black')
-plt.grid(True)
-plt.legend()
-plt.title("Visualization of Lines L1, L2, L3, L4")
-plt.xlabel("X - axis")
-plt.ylabel("Y - axis")
-plt.xlim(-5, 5)
-plt.ylim(-5, 5)
+ax.text2D(0.85, 0.90,
+          "Surface (blue):  $x^2 + y^2 + z = 9$\n"
+          "Tangent Plane (orange):  $2x + 4y + z = 14$",
+          transform=ax.transAxes,
+          fontsize=10,
+          bbox=dict(boxstyle="round", alpha=0.5))
+ax.text(px, py, pz + 1, "Point (1,2,4)", fontsize=10)
+ax.set_xlabel('X - axis')
+ax.set_ylabel('Y - axis')
+ax.set_zlabel('Z - axis')
+ax.set_title('Surface $x^2 + y^2 + z = 9$ and Tangent Plane $2x + 4y + z = 14$')
 plt.show()
     \end{lstlisting}

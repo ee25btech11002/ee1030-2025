@@ -13,11 +13,9 @@
 \usepackage{gvv}
 \usepackage{lmodern}
 \usepackage{circuitikz}
-\usepackage{lmodern}
-\usepackage{multicol}
 \usepackage{tikz}
 \usepackage{graphicx}
-
+\usepackage{multicol}
 \setbeamertemplate{page number in head/foot}[totalframumber]
 
 \usepackage{tcolorbox}
@@ -76,8 +74,8 @@
 %This block of code defines the information to appear in the
 %Title page
 \title %optional
-{12.744}
-\date{October 11,2025}
+{12.848}
+\date{October 6,2025}
 %\subtitle{A short story}
 
 \author % (optional)
@@ -87,166 +85,180 @@
 
 \begin{document}
 
-
 \frame{\titlepage}
 
 \begin{frame}{Question}
-Consider the following equations of straight lines:
-\begin{align*}
-	\text{Line L1} &\colon 2x - 3y = 5 \\
-	\text{Line L2} &\colon 3x + 2y = 8 \\
-	\text{Line L3} &\colon 4x - 6y = 5 \\
-	\text{Line L4} &\colon 6x - 9y = 6
-\end{align*}
-Which one among the following is the correct statement?
+The tangent plane to the surface $x^2 + y^2 + z = 9$ at the point $(1, 2, 4)$ is
 \begin{enumerate}
-	\item L1 is parallel to L2 and L1 is perpendicular to L3
-	\item L2 is parallel to L4 and L2 is perpendicular to L1
-	\item L3 is perpendicular to L4 and L3 is parallel to L2
-	\item L4 is perpendicular to L2 and L4 is parallel to L3
+        \item $2x+4y+z=14$
+        \item $4x+2y+z=12$
+        \item $x+4y+2z=17$
+        \item $4x+y+2z=14$
 \end{enumerate}
 \end{frame}
 
-\begin{frame}{Solution}
-A line $ax + by = c$ can be written as
+\begin{frame}{Theoretical Solution}
+The equation of the surface is\\
 \begin{align}
-\vec{n}^T \vec{x} = c,
+\vec{x}^\top V \vec{x} + 2u^\top \vec{x} + f = 0
 \end{align}
+
+\begin{align}
+\vec{x} = \myvec{x\\y\\z}, \quad 
+\vec{V} = \myvec{1&0&0\\0&1&0\\0&0&0}, \quad
+\vec{u} = \myvec{0\\0\\\frac{1}{2}}, \quad
+f = -9
+\end{align}
+
+The tangent plane is given as
+\begin{align}
+    \brak{\vec{Vq} + \vec{u}}^\top \vec{x} + \vec{u}^\top \vec{q} + f = 0
+\end{align}
+\end{frame}
+
+\begin{frame}{Theoretical Solution}
 where
 \begin{align}
-\vec{n} = \myvec{a\\b} \quad
-\vec{x} = \myvec{x\\y}
+    \vec{q} = \myvec{1\\2\\4}
 \end{align}
 
-Thus, the normal vectors are:
 \begin{align}
-\vec{n}_1 &= \myvec{2\\-3}, &
-\vec{n}_2 &= \myvec{3\\2}, &
-\vec{n}_3 &= \myvec{4\\-6}, &
-\vec{n}_4 &= \myvec{6\\-9}
+    \brak{\myvec{1&0&0\\0&1&0\\0&0&0}\myvec{1\\2\\4} + \myvec{0\\0\\\frac{1}{2}}}^\top \vec{x} +
+    \myvec{0\\0\\\frac{1}{2}}^\top \myvec{1\\2\\4} = 9
 \end{align}
-\end{frame}
-
-
-
-\begin{frame}{Solution}
-Two lines are parallel if their normal vectors are proportional:
 \begin{align}
-\vec{n}_3 &= 2 \vec{n}_1 \implies \text{L1 is parallel to L3}, \\
-\vec{n}_4 &= \frac{3}{2} \vec{n}_3 \implies \text{L3 is parallel to L4}.
+    \myvec{1\\2\\\frac{1}{2}}^\top \vec{x} = 7
 \end{align}
-
-Two lines are perpendicular if
 \begin{align}
-\vec{n}_i^T \vec{n}_j = 0
+    \implies 2x + 4y + z = 14
 \end{align}
-\end{frame}
-
-\begin{frame}{Solution}
-\begin{align}
-\vec{n}_1^T \vec{n}_2 &= \myvec{2 & -3} \myvec{3\\2} = 6 - 6 = 0 
-\implies \text{L1 is perpendicular to L2},\\
-\vec{n}_4^T \vec{n}_2 &= \myvec{6 & -9} \myvec{3\\2} = 18 - 18 = 0 
-\implies \text{L4 is perpendicular to L2}
-\end{align}
-
-L4 is perpendicular to L2 and L4 is parallel to L3
 \end{frame}
 
 \begin{frame}[fragile]
     \frametitle{C code}
     \begin{lstlisting}
 #include <stdio.h>
-// Functions for each line: y = f(x)
-double line_L1(double x) {
-    return (2.0*x - 5.0)/3.0;
-}
+#include <math.h>
 
-double line_L2(double x) {
-    return (8.0 - 3.0*x)/2.0;
-}
-
-double line_L3(double x) {
-    return (4.0*x - 5.0)/6.0;
-}
-
-double line_L4(double x) {
-    return (6.0*x - 6.0)/9.0;
+// Function to compute Z values for the surface: z = 9 - x^2 - y^2
+void compute_surface(int n, double *x, double *y, double **Z) {
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            Z[i][j] = 9.0 - x[i]*x[i] - y[j]*y[j];
+        }
+    }
 }
     \end{lstlisting}
 \end{frame}
 
+\begin{frame}[fragile]
+    \frametitle{C code}
+    \begin{lstlisting}
+// Function to compute Z values for the tangent plane: z = 14 - 2x - 4y
+void compute_plane(int n, double *x, double *y, double **Z) {
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            Z[i][j] = 14.0 - 2.0*x[i] - 4.0*y[j];
+        }
+    }
+}
+    \end{lstlisting}
+\end{frame}
 \begin{frame}[fragile]
     \frametitle{Python Code}
     \begin{lstlisting}[language=Python]
 import numpy as np
 import matplotlib.pyplot as plt
-from ctypes import CDLL, c_double
+from mpl_toolkits.mplot3d import Axes3D
+import ctypes
 
-# Load shared library
-lib = CDLL("./formula.so")
+# Load the shared library
+lib = ctypes.CDLL('./formula.so')
 
-# Define Python wrappers for C functions
-lib.line_L1.restype = c_double
-lib.line_L1.argtypes = [c_double]
+# Array size
+n = 100
+x = np.linspace(-3, 3, n)
+y = np.linspace(-3, 3, n)
 
-lib.line_L2.restype = c_double
-lib.line_L2.argtypes = [c_double]
-
-lib.line_L3.restype = c_double
-lib.line_L3.argtypes = [c_double]
-    \end{lstlisting}
-\end{frame}
-\begin{frame}[fragile]
-    \frametitle{Python Code}
-    \begin{lstlisting}[language=Python]
-lib.line_L4.restype = c_double
-lib.line_L4.argtypes = [c_double]
-
-# x values for plotting
-x = np.linspace(-5, 5, 400)
-
-# Compute y values by calling C functions
-y1 = np.array([lib.line_L1(xi) for xi in x])
-y2 = np.array([lib.line_L2(xi) for xi in x])
-y3 = np.array([lib.line_L3(xi) for xi in x])
-y4 = np.array([lib.line_L4(xi) for xi in x])
-
-# Plot each line
-plt.plot(x, y1, label='L1: 2x - 3y = 5', color='blue')
-plt.plot(x, y2, label='L2: 3x + 2y = 8', color='red')
-plt.plot(x, y3, label='L3: 4x - 6y = 5', color='green')
-plt.plot(x, y4, label='L4: 6x - 9y = 6', color='orange')
+# Create empty Z arrays
+Z_surface = np.zeros((n, n), dtype=np.float64)
+Z_plane = np.zeros((n, n), dtype=np.float64)
     \end{lstlisting}
 \end{frame}
 
 \begin{frame}[fragile]
     \frametitle{Python Code}
     \begin{lstlisting}[language=Python]
-# Highlight parallel and perpendicular
-plt.text(1, y1[240]+0.5, 'L1 || L3', color='green')
-plt.text(2, y2[260], 'L2 $\perp$ L4', color='red')
+# Convert to C pointers
+X_ptr = x.ctypes.data_as(ctypes.POINTER(ctypes.c_double))
+Y_ptr = y.ctypes.data_as(ctypes.POINTER(ctypes.c_double))
+Z_surface_ptr = Z_surface.ctypes.data_as(ctypes.POINTER(ctypes.c_double))
+Z_plane_ptr = Z_plane.ctypes.data_as(ctypes.POINTER(ctypes.c_double))
+# Define the functions argument types
+lib.compute_surface.argtypes = [ctypes.c_int,
+                                ctypes.POINTER(ctypes.c_double),
+                                ctypes.POINTER(ctypes.c_double),
+                                ctypes.POINTER(ctypes.POINTER(ctypes.c_double))]
+lib.compute_plane.argtypes = [ctypes.c_int,
+                              ctypes.POINTER(ctypes.c_double),
+                              ctypes.POINTER(ctypes.c_double),
+                              ctypes.POINTER(ctypes.POINTER(ctypes.c_double))]
 
-# Axes and grid
-plt.axhline(0, color='black')
-plt.axvline(0, color='black')
-plt.grid(True)
-plt.legend()
-plt.title("Visualization of Lines L1, L2, L3, L4")
-plt.xlabel("X - axis")
-plt.ylabel("Y - axis")
-plt.xlim(-5, 5)
-plt.ylim(-5, 5)
+    \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Python Code}
+    \begin{lstlisting}[language=Python]
+# Allocate row pointers for C 2D array
+Z_surface_c = (ctypes.POINTER(ctypes.c_double) * n)()
+Z_plane_c = (ctypes.POINTER(ctypes.c_double) * n)()
+for i in range(n):
+    Z_surface_c[i] = Z_surface[i].ctypes.data_as(ctypes.POINTER(ctypes.c_double))
+    Z_plane_c[i] = Z_plane[i].ctypes.data_as(ctypes.POINTER(ctypes.c_double))
+
+# Call C functions
+lib.compute_surface(n, X_ptr, Y_ptr, Z_surface_c)
+lib.compute_plane(n, X_ptr, Y_ptr, Z_plane_c)
+# Point of contact
+px, py, pz = 1, 2, 4
+
+# Plot
+fig = plt.figure(figsize=(10, 7))
+ax = fig.add_subplot(111, projection='3d')
+    \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Python Code}
+    \begin{lstlisting}[language=Python]
+X, Y = np.meshgrid(x, y)
+ax.plot_surface(X, Y, Z_surface, alpha=0.5)
+ax.plot_surface(X, Y, Z_plane, alpha=0.5)
+ax.scatter(px, py, pz, s=60)
+
+ax.text2D(0.85, 0.90,
+          "Surface (blue):  $x^2 + y^2 + z = 9$\n"
+          "Tangent Plane (orange):  $2x + 4y + z = 14$",
+          transform=ax.transAxes,
+          fontsize=10,
+          bbox=dict(boxstyle="round", alpha=0.5))
+ax.text(px, py, pz + 1, "Point (1,2,4)", fontsize=10)
+ax.set_xlabel('X - axis')
+ax.set_ylabel('Y - axis')
+ax.set_zlabel('Z - axis')
+ax.set_title('Surface $x^2 + y^2 + z = 9$ and Tangent Plane $2x + 4y + z = 14$')
 plt.show()
     \end{lstlisting}
-\end{frame}    
+\end{frame}
 
-\begin{frame}{Python Plot}
+\begin{frame}{Plot}
     \begin{figure}
         \centering
-        \includegraphics[width=\columnwidth]{../figs/figure_py.png}
-        \caption{Lines}
-        \label{fig:fig}
+        \includegraphics[width=\columnwidth]{../figs/figure_c.png}
+        \caption{Graph}
+        \label{fig:final_plot}
     \end{figure}
 \end{frame}
+
 \end{document}
