@@ -1,0 +1,13 @@
+\frametitle{Python Code}
+    \begin{lstlisting}[language=Python]
+x.set_aspect('equal', 'box')
+ax.set_xlim(-2*a, 2*a)
+ax.set_ylim(-2*b, 2*b)
+ax.set_xlabel('x')
+ax.set_ylabel('y')
+ax.set_title('Ellipse and triangles PON (from C via .so)')
+ax.grid(True)
+ax.legend(loc='upper left')
+
+plt.show()
+    \end{lstlisting}
